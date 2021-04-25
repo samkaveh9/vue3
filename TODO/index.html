@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Awesome vue</title>
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="page-content page-container" id="page-content">
+        <div class="padding">
+          <div class="row container d-flex justify-content-center">
+            <div class="col-md-12">
+              <div class="card px-3">
+                <div class="card-body">
+                  <h4 class="card-title">Awesome Todo list</h4>
+                  <div class="add-items d-flex">
+                    <input
+                      type="text"
+                      class="form-control todo-list-input"
+                      placeholder="What do you need to do today?"
+                      v-model.trim="input"/>
+                    <button
+                      class="add btn btn-primary font-weight-bold todo-list-add-btn"
+                      @click="addTask">
+                      Add
+                    </button>
+                  </div>
+                  <div class="list-wrapper">
+                    <ul class="d-flex flex-column-reverse todo-list">
+                      <li :class="{'completed': task.completed }" v-for="(task, index) in tasks" :key="task.index">
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="checkbox" @click="task.completed = !task.completed" type="checkbox" /> {{ task.title }}
+                             <i class="input-helper"></i></label>
+                        </div>
+                        <i class="remove" @click="removeTask(index)">×</i>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/vue3.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
